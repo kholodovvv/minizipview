@@ -110,6 +110,8 @@ void MainWindow::OpenArch(const QString &pathToArch)
     }
 
     unzClose(unzfile);
+    if(unzGlobalInfo)
+        delete unzGlobalInfo;
 }
 
 QString MainWindow::ChoosingUnitMeasure(const int &value)
@@ -131,6 +133,11 @@ QString MainWindow::ChoosingUnitMeasure(const int &value)
 
 MainWindow::~MainWindow()
 {
+    if(model)
+        delete model;
+
+    if(tableView)
+        delete tableView;
 }
 
 void MainWindow::slotOpenFile()
